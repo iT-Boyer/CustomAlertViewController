@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "IHFAlertController.h"
 #import "IHFAlertAction.h"
+#import "JHUnitOrgAlertController.h"
 
 @interface ViewController ()
 
@@ -86,7 +87,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (IBAction)ThreeSheetTouch:(id)sender {
+- (IBAction)ThreeSheetTouch1:(id)sender {
     
     UIImage *image = [UIImage imageNamed:@"beauty"];
     IHFAlertController *sheetController = [[IHFAlertController alloc] initWithTitle:@"提示" message:alert_message image:image style:IHFAlertControllerStyleSheet];
@@ -108,6 +109,33 @@
     
     [self presentViewController:sheetController animated:YES completion:nil];
     
+}
+
+- (IBAction)ThreeSheetTouch:(id)sender
+{
+    JHUnitOrgAlertController *alert = [[JHUnitOrgAlertController alloc] initWithTitle:nil message:@"nihhoa" image:nil style:JHAlertControllerStyleAlert];
+//    JHUnitOrgAlertController *alert = [[JHUnitOrgAlertController alloc] showMessage:@"nihao" dismissDelay:4 style:JHAlertControllerStyleToast];
+    JHAlertAction *cancel = [[JHAlertAction alloc] initWithTitle:@"取消" style:JHAlertActionStyleCancle action:^{
+        
+    }];
+    cancel.titleLabel.font = [UIFont systemFontOfSize:16];
+    [cancel setTitleColor:[UIColor colorWithRed:39/255.0 green:39/255.0 blue:39/255.0 alpha:1.0] forState:UIControlStateNormal];
+    cancel.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
+    cancel.layer.masksToBounds = true;
+    cancel.layer.cornerRadius = 19;
+    
+    JHAlertAction *ok = [[JHAlertAction alloc] initWithTitle:@"确定" style:JHAlertActionStyleCancle action:^{
+        
+    }];
+    ok.titleLabel.font = [UIFont systemFontOfSize:16];
+    [ok setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    ok.backgroundColor = [UIColor colorWithRed:4/255.0 green:161/255.0 blue:116/255.0 alpha:1.0];
+    ok.layer.masksToBounds = true;
+    ok.layer.cornerRadius = 19;
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
